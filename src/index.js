@@ -6,7 +6,11 @@ module.exports = {
   register,
 };
 
-async function listen(credentials, notificationCallback) {
+async function listen(
+  credentials,
+  notificationCallback,
+  droppedNotificationCallback
+) {
   if (!credentials) {
     throw new Error('Missing credentials');
   }
@@ -31,6 +35,9 @@ async function listen(credentials, notificationCallback) {
 
   const client = new Client(credentials, credentials.persistentIds);
   client.on('ON_NOTIFICATION_RECEIVED', notificationCallback);
+  if (droppedNotificationCallback) {
+    client.on('ON_NOTIFICATION_DROPPED', droppedNotificationCallback);
+  }
   client.connect();
   return client;
 }

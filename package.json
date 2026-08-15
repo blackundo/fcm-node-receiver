@@ -1,7 +1,8 @@
 {
-  "name": "@mr.cuongnt/fcm-node-receiver",
-  "version": "2.2.0",
-  "description": "A module to subscribe to GCM/FCM and receive notifications within a node process. Compatible with the latest FCM registration endpoints.",
+  "name": "@blackundo/fcm-node-receiver",
+  "version": "2.3.0",
+  "description":
+    "A module to subscribe to GCM/FCM and receive notifications within a node process. Compatible with the latest FCM registration endpoints.",
   "keywords": [
     "push",
     "service",
@@ -12,13 +13,13 @@
     "electron",
     "receiver"
   ],
-  "homepage": "https://github.com/cuongdev/fcm-node-receiver#readme",
+  "homepage": "https://github.com/blackundo/fcm-node-receiver#readme",
   "bugs": {
-    "url": "https://github.com/cuongdev/fcm-node-receiver/issues"
+    "url": "https://github.com/blackundo/fcm-node-receiver/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/cuongdev/fcm-node-receiver.git"
+    "url": "git+https://github.com/blackundo/fcm-node-receiver.git"
   },
   "license": "MIT",
   "author": "cuong",
@@ -32,8 +33,10 @@
     "start": "node scripts/listen",
     "register": "node scripts/register",
     "send": "node scripts/send",
-    "pretty": "prettier-eslint --single-quote --trailing-comma es5 --write \"**/*.js\" \"**/*.json\"",
-    "pretty:check": "prettier-eslint --single-quote --trailing-comma es5 --list-different --log-level silent \"**/*.js\" \"**/*.json\"",
+    "pretty":
+      "prettier-eslint --single-quote --trailing-comma es5 --write \"**/*.js\" \"**/*.json\"",
+    "pretty:check":
+      "prettier-eslint --single-quote --trailing-comma es5 --list-different --log-level silent \"**/*.js\" \"**/*.json\"",
     "lint": "eslint 'src/**/*.js'",
     "lint:fix": "eslint 'src/**/*.js' --fix",
     "test": "jest",
@@ -65,8 +68,6 @@
       "eslint --fix",
       "prettier-eslint --single-quote --trailing-comma es5 --write"
     ],
-    "*.json": [
-      "prettier-eslint --single-quote --trailing-comma es5 --write"
-    ]
+    "*.json": ["prettier-eslint --single-quote --trailing-comma es5 --write"]
   }
 }
