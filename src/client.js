@@ -136,15 +136,15 @@ module.exports = class Client extends EventEmitter {
   }
 
   _onSocketClose() {
-    this.emit('disconnect')
+    this.emit('disconnect');
     this._retry();
   }
 
-  _onSocketError(error) {
+  _onSocketError() {
     // ignore, the close handler takes care of retry
   }
 
-  _onParserError(error) {
+  _onParserError() {
     this._retry();
   }
 
@@ -173,24 +173,23 @@ module.exports = class Client extends EventEmitter {
     try {
       message = decrypt(object, this._credentials.keys);
     } catch (error) {
-      switch (true) {
-        case error.message.includes(
-          'Unsupported state or unable to authenticate data'
-        ):
-        case error.message.includes('crypto-key is missing'):
-        case error.message.includes('salt is missing'):
-          // NOTE(ibash) Periodically we're unable to decrypt notifications. In
-          // all cases we've been able to receive future notifications using the
-          // same keys. So, we silently drop this notification.
-          console.warn(
-            'Message dropped as it could not be decrypted: ' + error.message
-          );
-          this._persistentIds.push(object.persistentId);
-          return;
-        default: {
-          throw error;
-        }
+      const errorMessage =
+        error && error.message ? error.message : String(error);
+      const errorCode = error && error.code ? error.code : 'FCM_DECRYPT_ERROR';
+
+      console.warn(
+        `Message dropped as it could not be decrypted: ${errorCode}: ${errorMessage}`
+      );
+
+      if (object.persistentId) {
+        this._persistentIds.push(object.persistentId);
       }
+
+      this.emit('ON_NOTIFICATION_DROPPED', {
+        persistentId : object.persistentId,
+        error        : { code : errorCode, message : errorMessage },
+      });
+      return;
     }
 
     // Maintain persistentIds updated with the very last received value
