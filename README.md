@@ -1,18 +1,18 @@
 > [!WARNING]
 > This library is no longer functioning since September 2024, and is not maintained. Use this instead: https://github.com/liamcottle/push-receiver
 
-# @mr.cuongnt/fcm-node-receiver
+# @blackundo/fcm-node-receiver
 
 A library to subscribe to GCM/FCM and receive notifications within a node process. Compatible with the latest FCM registration endpoints.
 
 The original [push-receiver](https://github.com/MatthieuLemoine/push-receiver) FCM registration endpoint has been [deprecated and removed as of June 20, 2024](https://firebase.google.com/support/faq#fcm-depr-features).
 
-## When should I use `@mr.cuongnt/fcm-node-receiver` ?
+## When should I use `@blackundo/fcm-node-receiver` ?
 
 - I want to **receive** push notifications sent using Firebase Cloud Messaging in a NodeJS application.
 - I want to communicate with a node process/server using Firebase Cloud Messaging infrastructure.
 
-## When should I not use `@mr.cuongnt/fcm-node-receiver` ?
+## When should I not use `@blackundo/fcm-node-receiver` ?
 
 - I want to **send** push notifications (use the firebase SDK instead)
 - My application is running on a FCM supported platform (Android, iOS, Web).
@@ -20,7 +20,7 @@ The original [push-receiver](https://github.com/MatthieuLemoine/push-receiver) F
 ## Install
 
 `
-npm i -S @mr.cuongnt/fcm-node-receiver
+npm i -S @blackundo/fcm-node-receiver
 `
 
 ## Requirements
@@ -32,7 +32,7 @@ npm i -S @mr.cuongnt/fcm-node-receiver
 ## Usage
 
 ```javascript
-const { register, listen } = require('@mr.cuongnt/fcm-node-receiver');
+const { register, listen } = require('@blackundo/fcm-node-receiver');
 
 // Firebase config
 const config = {

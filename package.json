@@ -1,6 +1,6 @@
 {
   "name": "@blackundo/fcm-node-receiver",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "description":
     "A module to subscribe to GCM/FCM and receive notifications within a node process. Compatible with the latest FCM registration endpoints.",
   "keywords": [
@@ -22,7 +22,7 @@
     "url": "git+https://github.com/blackundo/fcm-node-receiver.git"
   },
   "license": "MIT",
-  "author": "cuong",
+  "author": "blackundo",
   "type": "commonjs",
   "main": "src/index.js",
   "directories": {
